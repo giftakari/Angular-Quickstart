@@ -1,4 +1,4 @@
-# Leture Series on Angular
+# A Lecture Series on Angular
 
 ## What is this?
 
