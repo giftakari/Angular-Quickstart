@@ -1,0 +1,55 @@
+<!-- Guard against missing customer (defensive programming) -->
+<div *ngIf="customer">
+
+  <!--Diagnostic: {{ customer | json }}-->
+
+  <h2>{{customer.name}}</h2>
+
+   <p><i>
+    {{customer.name}} is at {{customer.address.street}} in {{customer.address.city}}
+    in {{customer.address.state}} in the {{customer.address.region}} region.
+  </i></p>
+
+  <fieldset>
+    <label>
+      Name:
+      <input [(ngModel)]="customer.name" placeholder="Customer name">
+    </label>
+  </fieldset>
+
+  <br>
+  <label><input type="checkbox" [(ngModel)]="showAddress"/>Show address</label>
+
+  <div *ngIf="showAddress">
+    <h3>Address:</h3>
+    <fieldset>
+      <label>
+        Street:
+        <input [(ngModel)]="customer.address.street" placeholder="Street">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        City:
+        <input [(ngModel)]="customer.address.city" placeholder="City">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        State:
+        <select [(ngModel)]="customer.address.state">
+          <option *ngFor="let state of states">{{state}}</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Region:
+        <select [(ngModel)]="customer.address.region">
+          <option *ngFor="let region of regions">{{region}}</option>
+        </select>
+      </label>
+    </fieldset>
+  </div>
+
+</div>

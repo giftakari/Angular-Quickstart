@@ -1,0 +1,38 @@
+<div *ngIf="address">
+  <!-- Diagnostic {{ address | json }}-->
+  <fieldset>
+    <label>
+      Street:
+      <input [(ngModel)]="address.street" placeholder="Street">
+    </label>
+  </fieldset>
+  <fieldset>
+    <label>
+      City:
+      <input [(ngModel)]="address.city" placeholder="City">
+    </label>
+  </fieldset>
+  <fieldset>
+    <label>
+      State:
+      <select [(ngModel)]="address.state">
+        <option *ngFor="let state of states">{{state}}</option>
+        <!-- Should have been:
+          <option *ngFor="let state of states" [value]="state">{{state}}</option>
+
+          Neglecting to bind [value] leads to incorrect rebinding of the option _after_ states arrive.
+          See https://github.com/angular/angular/issues/13578
+          Fixed in section 13.
+        -->
+      </select>
+    </label>
+  </fieldset>
+  <fieldset>
+    <label>
+      Region:
+      <select [(ngModel)]="address.region">
+        <option *ngFor="let region of regions">{{region}}</option>
+      </select>
+    </label>
+  </fieldset>
+</div>
