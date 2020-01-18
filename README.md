@@ -1,4 +1,4 @@
-# Let Series on Angular
+# Leture Series on Angular
 
 ## What is this?
 
